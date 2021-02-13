@@ -1,0 +1,13 @@
+ {
+     "name": "Test Extension",
+     "description": "First google chrome extension using Angular",
+     "version": "1.0",
+     "background": {
+        "scripts": [
+            "background.js",
+            "runtime.js"
+        ]
+     },
+
+     "manifest_version": 2
+ }
