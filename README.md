@@ -1,5 +1,7 @@
 # Angular Chrome Extension Sample project
 
+### Based on [webpack-extension-reloader](https://www.npmjs.com/package/webpack-extension-reloader)
+
 ## Development server
 
 `ng build --watch --configuration=dev`
