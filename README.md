@@ -1,4 +1,4 @@
-# Angular Chrome Extension Sample project
+# Angular Chrome Extension Starter project
 
 ### Based on [webpack-extension-reloader](https://www.npmjs.com/package/webpack-extension-reloader)
 
