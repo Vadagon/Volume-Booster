@@ -9,6 +9,13 @@
        "runtime.js"
      ]
    },
+   "permissions": [
+    "tabCapture",
+    "activeTab",
+    "tabs",
+    "storage",
+    "<all_urls>"
+  ],
    "content_scripts": [
    {
      "js": ["content.js", "runtime.js"],
