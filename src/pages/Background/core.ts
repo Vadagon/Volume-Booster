@@ -1,4 +1,4 @@
-import data from './globals';
+import data from "./globals";
 // chrome-extension://jcjiagpgoplifgcdkpdefncbbpdjdean/popup.html
 // IN-TAB VOLUME INDICATOR handler
 export function showVolumeInTabFunc(level: any) {
@@ -13,7 +13,7 @@ export function showVolumeInTabFunc(level: any) {
   if (level > 1) {
     showVolumeInTab =
       showVolumeInTab +
-      'for (var i = ' +
+      "for (var i = " +
       10 +
       " - 1; i >= 0; i--) {x[i].style.backgroundColor = 'white';} for (var i = " +
       (level + 9) +
@@ -21,7 +21,7 @@ export function showVolumeInTabFunc(level: any) {
   } else {
     showVolumeInTab =
       showVolumeInTab +
-      'for (var i = ' +
+      "for (var i = " +
       level * 10 +
       " - 1; i >= 0; i--) {x[i].style.backgroundColor = 'white';}";
   }
@@ -99,6 +99,18 @@ export var a = {
   volume: function (id: number, val: number, streamId?: string) {
     chrome.action.setBadgeText({ tabId: id, text: val.toString() });
     this.offScreenVolume(id, val / 100, streamId);
+
+    var iconLevel = 1;
+    // chrome.browserAction.setBadgeText({tabId: id, text: val.toString()})
+    if (val <= 100) iconLevel = 1;
+    else if (val <= 150) iconLevel = 2;
+    else if (val <= 300) iconLevel = 3;
+    else if (val <= 500) iconLevel = 4;
+    else if (val <= 800) iconLevel = 5;
+    chrome.action.setIcon({
+      tabId: id,
+      path: `assets/icons/icon1_${iconLevel}.png`,
+    });
     // data.tabsGaines[id].nodeGain.gain.setTargetAtTime(
     //   data.tabsLevels[id],
     //   0,
@@ -117,24 +129,24 @@ export var a = {
   offScreenVolume: function (tabId: number, val: number, streamId?: string) {
     // console.log('offScreenVolume', tabId, val, streamId);
     chrome.runtime.sendMessage({
-      type: 'volume',
-      target: 'offscreen',
+      type: "volume",
+      target: "offscreen",
       tabId: tabId,
       val: val,
       streamId: streamId,
     });
   },
   offScreenDelete: function (tabId: number) {
-    console.log('offScreenDelete', tabId);
+    console.log("offScreenDelete", tabId);
   },
   offScreenDisableAll: function () {
     // for (var tabId in data.tabsLevels)
-    console.log('offScreenDisable', 'tabId');
+    console.log("offScreenDisable", "tabId");
   },
   offScreenData: async function () {
     let res = await chrome.runtime.sendMessage({
-      type: 'data',
-      target: 'offscreen',
+      type: "data",
+      target: "offscreen",
     });
     return res;
   },

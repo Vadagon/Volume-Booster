@@ -34,7 +34,7 @@ async function increaseVolume() {
           _data.tabsLevels[id] = val / 100;
           a.volume(id, val);
         } else {
-          chrome.browserAction.setIcon({ path: `assets/icons/icon1_${2}.png` });
+          chrome.action.setIcon({tabId:id, path: `assets/icons/icon1_${2}.png` });
           _data.tabsLevels[id] = 150 / 100;
           a.init(id, 150);
         }
@@ -43,7 +43,7 @@ async function increaseVolume() {
   });
 }
 
-chrome.browserAction.onClicked.addListener(increaseVolume);
+chrome.action.onClicked.addListener(increaseVolume);
 
 // // AUDIO CAPTURE CHANGES listener
 // chrome.tabCapture.onStatusChanged.addListener(function (info) {
